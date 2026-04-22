@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Light theme (default) */
+  --color-bg-primary: #f4f4f5;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #e4e4e7;
+  --color-bg-accent: #eff6ff;
+  --color-text-primary: #09090b;
+  --color-text-secondary: #52525b;
+  --color-text-tertiary: #71717a;
+  --color-border: #d4d4d8;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-accent-active: #2dd4bf;
+  --color-accent-light: #dbeafe;
+  --color-text-on-accent: #ffffff;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-warning: #f59e0b;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 4px 8px rgba(0,0,0,0.06), 0 12px 24px rgba(0,0,0,0.07), 0 20px 40px rgba(0,0,0,0.08);
+  --shadow-card-pressed: 0 1px 2px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-card-lg: 0 12px 24px rgba(0,0,0,0.06), 0 20px 32px rgba(0,0,0,0.10);
+  --shadow-btn: 0 2px 8px rgba(59,130,246,0.25), 0 4px 16px rgba(59,130,246,0.15);
+  --shadow-btn-hover: 0 4px 12px rgba(59,130,246,0.35), 0 8px 24px rgba(59,130,246,0.2);
+  --shadow-btn-pressed: 0 1px 4px rgba(59,130,246,0.2);
+
+  /* Glass */
+  --color-glass-bg: rgba(255, 255, 255, 0.9);
+  --color-glass-border: rgba(212, 212, 216, 0.5);
+
+  /* Easing */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  /* Animation durations */
+  --animate-fade-in: fadeIn 0.3s var(--ease-out) both;
+  --animate-slide-up: slideUp 0.4s var(--ease-out) both;
+  --animate-stagger-in: stagger-in 0.3s var(--ease-out) both;
+  --animate-modal-in: modal-in 0.25s var(--ease-spring) both;
+  --animate-pulse-ring: pulse-ring 2s var(--ease-standard) infinite;
+  --animate-glow-pulse: glow-pulse 2s var(--ease-standard) infinite;
+}
+
+/* ============================================
+   DARK THEME
+   ============================================ */
+.dark {
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #121212;
+  --color-bg-tertiary: #1a1a1a;
+  --color-bg-accent: #172033;
+  --color-text-primary: #ededed;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #71717a;
+  --color-border: #27272a;
+  --color-accent: #60a5fa;
+  --color-accent-hover: #93c5fd;
+  --color-accent-active: #5eead4;
+  --color-accent-light: #172033;
+  --color-text-on-accent: #0a0a0a;
+  --color-success: #34d399;
+  --color-danger: #f87171;
+  --color-danger-hover: #ef4444;
+  --color-warning: #fbbf24;
+
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.25);
+  --shadow-card-hover: 0 4px 8px rgba(0,0,0,0.3), 0 12px 24px rgba(0,0,0,0.35), 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(96,165,250,0.05);
+  --shadow-card-pressed: 0 1px 2px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.25);
+  --shadow-card-lg: 0 12px 24px rgba(0,0,0,0.3), 0 20px 32px rgba(0,0,0,0.4);
+  --shadow-btn: 0 2px 8px rgba(96,165,250,0.3), 0 4px 16px rgba(96,165,250,0.2);
+  --shadow-btn-hover: 0 4px 12px rgba(96,165,250,0.4), 0 8px 24px rgba(96,165,250,0.25);
+  --shadow-btn-pressed: 0 1px 4px rgba(96,165,250,0.25);
+
+  --color-glass-bg: rgba(18, 18, 18, 0.92);
+  --color-glass-border: rgba(39, 39, 42, 0.6);
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(30%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-30%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(59,130,246,0.3); }
+  50% { box-shadow: 0 0 20px rgba(59,130,246,0.6); }
+}
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-tertiary) 25%,
+    var(--color-bg-secondary) 50%,
+    var(--color-bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 0.75rem;
+}
+
+/* ============================================
+   CARD DEPTH
+   ============================================ */
+.card-depth {
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 300ms var(--ease-spring), transform 300ms var(--ease-spring);
+}
+
+.card-depth:hover {
+  box-shadow: var(--shadow-card-hover);
+  transition: box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+.card-depth:active {
+  box-shadow: var(--shadow-card-pressed);
+}
+
+/* ============================================
+   ACCENT BUTTON OVERRIDE
+   ============================================ */
+.bg-accent {
+  background-color: var(--color-accent) !important;
+}
+
+.bg-accent:active {
+  background-color: var(--color-accent-active) !important;
+}
+
+/* ============================================
+   GLOBAL TRANSITIONS
+   ============================================ */
+* {
+  transition-property: background-color, border-color, color, box-shadow, transform, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+input, button, textarea, select {
+  transition-duration: 150ms;
+}
+
+button:active, a:active {
+  transition-duration: 0ms;
+}
+
+button, a {
+  transition-timing-function: var(--ease-spring);
+}
+
+button:hover, a:hover {
+  transition-timing-function: var(--ease-out);
+}
+
+/* ============================================
+   HIDE NUMBER INPUT SPINNERS
+   ============================================ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+/* ============================================
+   BODY
+   ============================================ */
+body {
+  -webkit-tap-highlight-color: transparent;
+  min-height: 100dvh;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .skeleton {
+    animation: none;
+  }
+}
