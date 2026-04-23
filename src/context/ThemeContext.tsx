@@ -28,6 +28,7 @@ function getSystemTheme(): 'light' | 'dark' {
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('system');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
 
   const applyTheme = useCallback((t: Theme) => {
     const resolved = t === 'system' ? getSystemTheme() : t;
@@ -50,6 +51,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const initial = saved || 'system';
     setThemeState(initial);
     applyTheme(initial);
+    setMounted(true);
 
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
     const handler = () => {
@@ -63,7 +65,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme }}>
-      {children}
+      <div style={{ visibility: mounted ? 'visible' : 'hidden' }}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }

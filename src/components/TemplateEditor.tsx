@@ -60,20 +60,20 @@ export default function TemplateEditor({ initialName, initialEntries, movements,
     <div className="animate-fade-in">
       <div className="mb-4 flex items-center justify-between">
         <button onClick={onCancel} className="flex items-center gap-1 text-sm font-medium text-text-tertiary hover:text-text-primary active:scale-95"><X size={18} /> Cancel</button>
-        <button onClick={() => onSave(name, entries)} className="flex items-center gap-1 rounded-xl bg-accent px-4 py-2 text-sm font-bold text-text-on-accent active:scale-95"><Save size={16} /> Save</button>
+        <button onClick={() => onSave(name, entries)} className="flex items-center gap-1 rounded-sm bg-accent px-4 py-2 text-sm font-bold text-text-on-accent active:scale-95"><Save size={16} /> Save</button>
       </div>
 
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Template name" className="mb-4 w-full rounded-xl border border-border bg-bg-primary px-4 py-3 text-lg font-bold text-text-primary focus:border-accent focus:outline-none" />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Template name" className="mb-4 w-full rounded-sm border border-border bg-bg-primary px-4 py-3 text-lg font-bold text-text-primary focus:border-accent focus:outline-none" />
 
       {/* Entries */}
       <div className="mb-4 flex flex-col gap-2">
         {entries.map((entry, i) => (
-          <div key={i} className="flex items-center gap-2 rounded-xl bg-bg-secondary p-3 card-depth">
+          <div key={i} className="flex items-center gap-2 rounded-sm bg-bg-secondary p-3 card-depth">
             <div className="flex-1">
               <p className="text-sm font-semibold text-text-primary">{entry.movementName}</p>
               <div className="mt-1 flex gap-2">
-                <input type="number" value={entry.reps} onChange={(e) => updateEntry(i, { reps: Number(e.target.value) })} className="w-16 rounded-lg border border-border bg-bg-primary px-2 py-1 text-center text-sm focus:outline-none" placeholder="Reps" />
-                <input type="number" value={entry.weight} onChange={(e) => updateEntry(i, { weight: Number(e.target.value) })} className="w-20 rounded-lg border border-border bg-bg-primary px-2 py-1 text-center text-sm focus:outline-none" placeholder="Weight" step="0.5" />
+                <input type="number" value={entry.reps} onChange={(e) => updateEntry(i, { reps: Number(e.target.value) })} className="w-16 rounded-sm border border-border bg-bg-primary px-2 py-1 text-center text-sm focus:outline-none" placeholder="Reps" />
+                <input type="number" value={entry.weight} onChange={(e) => updateEntry(i, { weight: Number(e.target.value) })} className="w-20 rounded-sm border border-border bg-bg-primary px-2 py-1 text-center text-sm focus:outline-none" placeholder="Weight" step="0.5" />
                 <span className="self-center text-xs text-text-tertiary">{entry.unit}</span>
               </div>
             </div>
@@ -91,14 +91,14 @@ export default function TemplateEditor({ initialName, initialEntries, movements,
 
       {/* Add Movement */}
       <div className="relative">
-        <button onClick={() => setShowSearch(!showSearch)} className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-border py-3 text-sm font-medium text-text-tertiary hover:border-accent hover:text-accent active:scale-[0.98]">
+        <button onClick={() => setShowSearch(!showSearch)} className="flex w-full items-center justify-center gap-2 rounded-sm border border-dashed border-border py-3 text-sm font-medium text-text-tertiary hover:border-accent hover:text-accent active:scale-[0.98]">
           <Plus size={16} /> Add Movement
         </button>
         {showSearch && (
           <div className="mt-2">
-            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search movements..." autoFocus className="w-full rounded-xl border border-border bg-bg-primary px-4 py-3 text-sm focus:border-accent focus:outline-none" />
+            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search movements..." autoFocus className="w-full rounded-sm border border-border bg-bg-primary px-4 py-3 text-sm focus:border-accent focus:outline-none" />
             {suggestions.length > 0 && (
-              <div className="mt-1 max-h-48 overflow-y-auto rounded-xl border border-border bg-bg-secondary">
+              <div className="mt-1 max-h-48 overflow-y-auto rounded-sm border border-border bg-bg-secondary">
                 {suggestions.map((m) => (
                   <button key={m.id} onClick={() => addMovement(m.name)} className="w-full px-4 py-2.5 text-left text-sm text-text-primary hover:bg-bg-tertiary">{m.name} <span className="text-xs text-text-tertiary">({m.category})</span></button>
                 ))}

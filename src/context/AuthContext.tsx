@@ -34,19 +34,9 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
       setLoading(false);
       return;
     }
-    const unsub = onAuthStateChanged(auth, async (u) => {
+    const unsub = onAuthStateChanged(auth, (u) => {
       setUser(u);
       setLoading(false);
-
-      if (u) {
-        // Seed data on first login (idempotent)
-        try {
-          await seedDefaultMovements(u.uid);
-          await seedDefaultTemplates(u.uid);
-        } catch (err) {
-          console.error('Failed to seed data:', err);
-        }
-      }
     });
     return unsub;
   }, []);

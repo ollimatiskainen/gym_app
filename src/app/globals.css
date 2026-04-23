@@ -1,37 +1,38 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Light theme (default) */
-  --color-bg-primary: #f4f4f5;
-  --color-bg-secondary: #ffffff;
-  --color-bg-tertiary: #e4e4e7;
-  --color-bg-accent: #eff6ff;
-  --color-text-primary: #09090b;
-  --color-text-secondary: #52525b;
-  --color-text-tertiary: #71717a;
-  --color-border: #d4d4d8;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #2563eb;
-  --color-accent-active: #2dd4bf;
-  --color-accent-light: #dbeafe;
+  /* Synthwave Dark Theme (Only Theme) */
+  --color-bg-primary: #130922;
+  --color-bg-secondary: #21103d;
+  --color-bg-tertiary: #3b236d;
+  --color-bg-accent: #542078;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #d8b4fe;
+  --color-text-tertiary: #a855f7;
+  --color-border: #00ffff; /* Cyan Grid */
+  --color-accent: #ff00ff; /* Magenta */
+  --color-accent-hover: #d800d8;
+  --color-accent-active: #aa00aa;
+  --color-accent-light: #300030;
   --color-text-on-accent: #ffffff;
-  --color-success: #10b981;
-  --color-danger: #ef4444;
-  --color-danger-hover: #dc2626;
-  --color-warning: #f59e0b;
+  --color-success: #39ff14; /* Neon Green */
+  --color-danger: #ff003c;
+  --color-danger-hover: #cc0030;
+  --color-warning: #ffae42; /* Yellow/Orange Sun */
 
-  /* Shadows */
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.06);
-  --shadow-card-hover: 0 4px 8px rgba(0,0,0,0.06), 0 12px 24px rgba(0,0,0,0.07), 0 20px 40px rgba(0,0,0,0.08);
-  --shadow-card-pressed: 0 1px 2px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-card-lg: 0 12px 24px rgba(0,0,0,0.06), 0 20px 32px rgba(0,0,0,0.10);
-  --shadow-btn: 0 2px 8px rgba(59,130,246,0.25), 0 4px 16px rgba(59,130,246,0.15);
-  --shadow-btn-hover: 0 4px 12px rgba(59,130,246,0.35), 0 8px 24px rgba(59,130,246,0.2);
-  --shadow-btn-pressed: 0 1px 4px rgba(59,130,246,0.2);
+  /* Shadows - Neon Glows */
+  --shadow-card: 0px 0px 8px 0px rgba(0, 255, 255, 0.2), inset 0px 0px 4px 0px rgba(0, 255, 255, 0.1);
+  --shadow-card-hover: 0px 0px 12px 0px rgba(0, 255, 255, 0.4), inset 0px 0px 6px 0px rgba(0, 255, 255, 0.2);
+  --shadow-card-pressed: 0px 0px 4px 0px rgba(0, 255, 255, 0.6), inset 0px 0px 2px 0px rgba(0, 255, 255, 0.4);
+  --shadow-card-lg: 0px 0px 16px 0px rgba(0, 255, 255, 0.3);
+  
+  --shadow-btn: 0px 0px 10px 0px rgba(255, 0, 255, 0.5), inset 0px 0px 5px 0px rgba(255, 0, 255, 0.3);
+  --shadow-btn-hover: 0px 0px 15px 0px rgba(255, 0, 255, 0.8), inset 0px 0px 8px 0px rgba(255, 0, 255, 0.5);
+  --shadow-btn-pressed: 0px 0px 5px 0px rgba(255, 0, 255, 0.9), inset 0px 0px 2px 0px rgba(255, 0, 255, 0.8);
 
   /* Glass */
-  --color-glass-bg: rgba(255, 255, 255, 0.9);
-  --color-glass-border: rgba(212, 212, 216, 0.5);
+  --color-glass-bg: rgba(19, 9, 34, 0.85);
+  --color-glass-border: rgba(0, 255, 255, 0.5);
 
   /* Easing */
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -47,38 +48,11 @@
   --animate-glow-pulse: glow-pulse 2s var(--ease-standard) infinite;
 }
 
-/* ============================================
-   DARK THEME
-   ============================================ */
-.dark {
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #121212;
-  --color-bg-tertiary: #1a1a1a;
-  --color-bg-accent: #172033;
-  --color-text-primary: #ededed;
-  --color-text-secondary: #a1a1aa;
-  --color-text-tertiary: #71717a;
-  --color-border: #27272a;
-  --color-accent: #60a5fa;
-  --color-accent-hover: #93c5fd;
-  --color-accent-active: #5eead4;
-  --color-accent-light: #172033;
-  --color-text-on-accent: #0a0a0a;
-  --color-success: #34d399;
-  --color-danger: #f87171;
-  --color-danger-hover: #ef4444;
-  --color-warning: #fbbf24;
-
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.25);
-  --shadow-card-hover: 0 4px 8px rgba(0,0,0,0.3), 0 12px 24px rgba(0,0,0,0.35), 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(96,165,250,0.05);
-  --shadow-card-pressed: 0 1px 2px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.25);
-  --shadow-card-lg: 0 12px 24px rgba(0,0,0,0.3), 0 20px 32px rgba(0,0,0,0.4);
-  --shadow-btn: 0 2px 8px rgba(96,165,250,0.3), 0 4px 16px rgba(96,165,250,0.2);
-  --shadow-btn-hover: 0 4px 12px rgba(96,165,250,0.4), 0 8px 24px rgba(96,165,250,0.25);
-  --shadow-btn-pressed: 0 1px 4px rgba(96,165,250,0.25);
-
-  --color-glass-bg: rgba(18, 18, 18, 0.92);
-  --color-glass-border: rgba(39, 39, 42, 0.6);
+:root {
+  --grad-1: #2a0845;
+  --grad-2: #6441A5;
+  --grad-3: #ff00ff;
+  --grad-opacity: 0.2;
 }
 
 /* ============================================
@@ -125,8 +99,13 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(59,130,246,0.3); }
-  50% { box-shadow: 0 0 20px rgba(59,130,246,0.6); }
+  0%, 100% { box-shadow: 0 0 8px rgba(0,255,255,0.3); }
+  50% { box-shadow: 0 0 20px rgba(0,255,255,0.8); }
+}
+
+@keyframes hexBackgroundMove {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 0, 80px 138.56px; }
 }
 
 /* ============================================
@@ -141,15 +120,19 @@
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 0.75rem;
+  border-radius: 0;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
 }
 
 /* ============================================
-   CARD DEPTH
+   CARD DEPTH & HEX CLIP
    ============================================ */
 .card-depth {
   box-shadow: var(--shadow-card);
   transition: box-shadow 300ms var(--ease-spring), transform 300ms var(--ease-spring);
+  border: 1px solid var(--color-border);
+  clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='34.64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5.77l-10-5.77L0 5.77v11.54l10 5.77 10-5.77V5.77zM10 34.64L0 28.87v-11.54l10-5.77 10 5.77v11.54l-10 5.77z' fill='none' stroke='%2300ffff' stroke-width='0.5' stroke-opacity='0.05'/%3E%3C/svg%3E");
 }
 
 .card-depth:hover {
@@ -162,14 +145,31 @@
 }
 
 /* ============================================
-   ACCENT BUTTON OVERRIDE
+   ACCENT BUTTON OVERRIDE (HEX BUTTONS)
    ============================================ */
-.bg-accent {
+.bg-accent, button.bg-accent {
   background-color: var(--color-accent) !important;
+  box-shadow: var(--shadow-btn);
+  border: 1px solid #ff88ff;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  /* Hex texture for buttons */
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='17.32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 2.88L5 0 0 2.88v5.77l5 2.88 5-2.88V2.88zM5 17.32L0 14.43V8.66l5-2.88 5 2.88v5.77L5 17.32z' fill='none' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.2'/%3E%3C/svg%3E");
+  border-radius: 0 !important;
+}
+
+.bg-accent:hover {
+  box-shadow: var(--shadow-btn-hover);
 }
 
 .bg-accent:active {
   background-color: var(--color-accent-active) !important;
+  box-shadow: var(--shadow-btn-pressed);
+}
+
+/* Generic buttons should also have the cut corners */
+button:not(.bg-accent) {
+  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
+  border-radius: 0 !important;
 }
 
 /* ============================================
@@ -214,16 +214,20 @@ input[type="number"] {
    SCROLLBAR
    ============================================ */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--color-bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
-  border-radius: 2px;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
 }
 
 /* ============================================
@@ -235,6 +239,22 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%; left: -50%; right: -50%; bottom: -50%;
+  width: 200vw; height: 200vh;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(255, 0, 255, 0.15), transparent 60%),
+              url("data:image/svg+xml,%3Csvg width='80' height='138.564' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80 23.094L40 0 0 23.094v46.188L40 92.376l40-23.094V23.094zM40 138.564L0 115.47V69.282l40-23.094 40 23.094v46.188L40 138.564z' fill='none' stroke='%23ff00ff' stroke-width='2' stroke-opacity='0.15'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 80px 138.564px;
+  animation: bgGradient 15s ease-in-out infinite alternate, hexBackgroundMove 40s linear infinite;
+  opacity: var(--grad-opacity);
+  pointer-events: none;
 }
 
 /* ============================================

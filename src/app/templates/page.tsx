@@ -26,6 +26,7 @@ export default function TemplatesPage() {
     if (!user) return;
     Promise.all([getTemplates(user.uid), getMovements(user.uid), getTodayWorkout(user.uid)])
       .then(([t, m, w]) => { setTemplates(t); setMovements(m); setTodayHasEntries(!!(w && w.entries.length > 0)); })
+      .catch((err) => console.error('Failed to load templates:', err))
       .finally(() => setLoading(false));
   }, [user]);
 
@@ -90,7 +91,7 @@ export default function TemplatesPage() {
       ) : (
         <div className="flex flex-col gap-3">
           {templates.map((t, i) => (
-            <div key={t.id} className="rounded-2xl bg-bg-secondary p-4 card-depth">
+            <div key={t.id} className="rounded-sm bg-bg-secondary p-4 card-depth">
               <div className="mb-2 flex items-center justify-between">
                 <h3 className="font-bold text-text-primary">{t.name}</h3>
                 <div className="flex items-center gap-1">
@@ -100,18 +101,18 @@ export default function TemplatesPage() {
               </div>
               <p className="mb-3 text-xs text-text-tertiary truncate">{t.entries.map((e) => e.movementName).join(', ')}</p>
               <div className="flex gap-2">
-                <button onClick={() => handleLoad(t)} disabled={loadingTemplate === t.id || loadedTemplate === t.id} className={`flex flex-1 items-center justify-center gap-1.5 rounded-xl py-2.5 text-sm font-bold active:scale-95 ${loadedTemplate === t.id ? 'bg-success text-white' : 'bg-accent text-text-on-accent'}`}>
+                <button onClick={() => handleLoad(t)} disabled={loadingTemplate === t.id || loadedTemplate === t.id} className={`flex flex-1 items-center justify-center gap-1.5 rounded-sm py-2.5 text-sm font-bold active:scale-95 ${loadedTemplate === t.id ? 'bg-success text-white' : 'bg-accent text-text-on-accent'}`}>
                   {loadingTemplate === t.id ? <Loader2 size={16} className="animate-spin" /> : loadedTemplate === t.id ? <><CheckCircle size={16} /> Loaded!</> : <><Play size={16} /> Load</>}
                 </button>
-                <button onClick={() => setEditing(t)} className="rounded-xl border border-border px-3 py-2.5 text-text-secondary hover:bg-bg-tertiary active:scale-95"><Pencil size={16} /></button>
-                <button onClick={() => handleDelete(t.id)} className="rounded-xl border border-border px-3 py-2.5 text-text-secondary hover:bg-danger/10 hover:text-danger active:scale-95"><Trash2 size={16} /></button>
+                <button onClick={() => setEditing(t)} className="rounded-sm border border-border px-3 py-2.5 text-text-secondary hover:bg-bg-tertiary active:scale-95"><Pencil size={16} /></button>
+                <button onClick={() => handleDelete(t.id)} className="rounded-sm border border-border px-3 py-2.5 text-text-secondary hover:bg-danger/10 hover:text-danger active:scale-95"><Trash2 size={16} /></button>
               </div>
             </div>
           ))}
         </div>
       )}
       {todayHasEntries && (
-        <button onClick={handleSaveCurrentAsTemplate} className="flex items-center justify-center gap-2 rounded-xl border border-dashed border-border py-3 text-sm font-medium text-text-tertiary hover:border-accent hover:text-accent active:scale-[0.98]">
+        <button onClick={handleSaveCurrentAsTemplate} className="flex items-center justify-center gap-2 rounded-sm border border-dashed border-border py-3 text-sm font-medium text-text-tertiary hover:border-accent hover:text-accent active:scale-[0.98]">
           <Save size={16} /> Save current workout as template
         </button>
       )}

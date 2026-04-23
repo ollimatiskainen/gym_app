@@ -22,7 +22,10 @@ export default function MovementsPage() {
 
   useEffect(() => {
     if (!user) return;
-    getMovements(user.uid).then(setMovements).finally(() => setLoading(false));
+    getMovements(user.uid)
+      .then(setMovements)
+      .catch((err) => console.error('Failed to load movements:', err))
+      .finally(() => setLoading(false));
   }, [user]);
 
   const filtered = movements.filter((m) => {
@@ -61,37 +64,37 @@ export default function MovementsPage() {
       {/* Search */}
       <div className="relative">
         <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary" />
-        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search movements..." className="w-full rounded-xl border border-border bg-bg-secondary pl-10 pr-4 py-3 text-sm focus:border-accent focus:outline-none" />
+        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search movements..." className="w-full rounded-sm border border-border bg-bg-secondary pl-10 pr-4 py-3 text-sm focus:border-accent focus:outline-none" />
       </div>
 
       {/* Category Filters */}
       <div className="flex flex-wrap gap-2">
-        <button onClick={() => setFilter('All')} className={`rounded-full px-3 py-1.5 text-xs font-bold active:scale-95 ${filter === 'All' ? 'bg-accent text-text-on-accent' : 'bg-bg-tertiary text-text-secondary'}`}>All</button>
+        <button onClick={() => setFilter('All')} className={`rounded-sm px-3 py-1.5 text-xs font-bold active:scale-95 ${filter === 'All' ? 'bg-accent text-text-on-accent' : 'bg-bg-tertiary text-text-secondary'}`}>All</button>
         {CATEGORIES.map((c) => (
-          <button key={c} onClick={() => setFilter(c)} className={`rounded-full px-3 py-1.5 text-xs font-bold active:scale-95 ${filter === c ? 'bg-accent text-text-on-accent' : 'bg-bg-tertiary text-text-secondary'}`}>{c}</button>
+          <button key={c} onClick={() => setFilter(c)} className={`rounded-sm px-3 py-1.5 text-xs font-bold active:scale-95 ${filter === c ? 'bg-accent text-text-on-accent' : 'bg-bg-tertiary text-text-secondary'}`}>{c}</button>
         ))}
       </div>
 
       {/* Add Form */}
-      <div className="rounded-2xl bg-bg-secondary p-4 card-depth">
+      <div className="rounded-sm bg-bg-secondary p-4 card-depth">
         <h3 className="mb-2 text-sm font-bold text-text-primary">Add Movement</h3>
         <div className="flex gap-2">
-          <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAdd()} placeholder="Movement name" className="flex-1 rounded-xl border border-border bg-bg-primary px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
-          <select value={newCategory} onChange={(e) => setNewCategory(e.target.value as Category)} className="rounded-xl border border-border bg-bg-primary px-2 py-2.5 text-sm focus:outline-none">
+          <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAdd()} placeholder="Movement name" className="flex-1 rounded-sm border border-border bg-bg-primary px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
+          <select value={newCategory} onChange={(e) => setNewCategory(e.target.value as Category)} className="rounded-sm border border-border bg-bg-primary px-2 py-2.5 text-sm focus:outline-none">
             {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
-          <button onClick={handleAdd} disabled={!newName.trim()} className="rounded-xl bg-accent px-3 py-2.5 text-text-on-accent active:scale-95 disabled:opacity-50"><Plus size={18} /></button>
+          <button onClick={handleAdd} disabled={!newName.trim()} className="rounded-sm bg-accent px-3 py-2.5 text-text-on-accent active:scale-95 disabled:opacity-50"><Plus size={18} /></button>
         </div>
       </div>
 
       {/* Movement List */}
       <div className="flex flex-col gap-1.5">
         {filtered.map((m) => (
-          <div key={m.id} className="flex items-center justify-between rounded-xl bg-bg-secondary px-4 py-3">
+          <div key={m.id} className="flex items-center justify-between rounded-sm bg-bg-secondary px-4 py-3">
             {editingId === m.id ? (
               <div className="flex flex-1 items-center gap-2">
-                <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} className="flex-1 rounded-lg border border-accent bg-bg-primary px-2 py-1 text-sm focus:outline-none" autoFocus />
-                <select value={editCategory} onChange={(e) => setEditCategory(e.target.value as Category)} className="rounded-lg border border-border bg-bg-primary px-1 py-1 text-xs">
+                <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} className="flex-1 rounded-sm border border-accent bg-bg-primary px-2 py-1 text-sm focus:outline-none" autoFocus />
+                <select value={editCategory} onChange={(e) => setEditCategory(e.target.value as Category)} className="rounded-sm border border-border bg-bg-primary px-1 py-1 text-xs">
                   {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
                 </select>
                 <button onClick={saveEdit} className="text-success active:scale-90"><Check size={16} /></button>

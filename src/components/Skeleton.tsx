@@ -1,6 +1,6 @@
 export function SkeletonCard() {
   return (
-    <div className="rounded-2xl bg-bg-secondary p-5">
+    <div className="rounded-sm bg-bg-secondary p-5">
       <div className="skeleton mb-3 h-5 w-2/3 rounded" />
       <div className="skeleton mb-2 h-4 w-full rounded" />
       <div className="skeleton h-4 w-4/5 rounded" />

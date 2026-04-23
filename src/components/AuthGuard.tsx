@@ -25,7 +25,11 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   }
 
   if (!user && pathname !== '/login') {
-    return null;
+    return (
+      <div className="flex min-h-[50vh] flex-col items-center justify-center p-4 text-center">
+        <p className="text-sm text-text-tertiary animate-pulse">Redirecting to login...</p>
+      </div>
+    );
   }
 
   return <>{children}</>;

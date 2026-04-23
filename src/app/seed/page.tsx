@@ -41,18 +41,18 @@ export default function SeedPage() {
       <h1 className="text-2xl font-bold text-text-primary">Seed Data (Dev)</h1>
       <p className="text-sm text-text-secondary">Use these buttons to seed default data. Both operations are idempotent.</p>
 
-      <button onClick={handleSeedMovements} disabled={loading} className="flex items-center justify-center gap-2 rounded-xl bg-accent py-3 font-bold text-text-on-accent active:scale-95 disabled:opacity-50">
+      <button onClick={handleSeedMovements} disabled={loading} className="flex items-center justify-center gap-2 rounded-sm bg-accent py-3 font-bold text-text-on-accent active:scale-95 disabled:opacity-50">
         {loading ? <Loader2 size={18} className="animate-spin" /> : <Database size={18} />}
         Seed Default Movements
       </button>
 
-      <button onClick={handleSeedTemplates} disabled={loading} className="flex items-center justify-center gap-2 rounded-xl bg-accent py-3 font-bold text-text-on-accent active:scale-95 disabled:opacity-50">
+      <button onClick={handleSeedTemplates} disabled={loading} className="flex items-center justify-center gap-2 rounded-sm bg-accent py-3 font-bold text-text-on-accent active:scale-95 disabled:opacity-50">
         {loading ? <Loader2 size={18} className="animate-spin" /> : <Database size={18} />}
         Seed Default Templates
       </button>
 
       {status && (
-        <div className="rounded-xl bg-bg-secondary p-4 text-sm text-text-secondary card-depth">
+        <div className="rounded-sm bg-bg-secondary p-4 text-sm text-text-secondary card-depth">
           {status}
         </div>
       )}

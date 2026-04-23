@@ -29,7 +29,7 @@ function InlineEdit({ value, onSave }: { value: number; onSave: (v: number) => v
   if (editing) {
     return (
       <span className="inline-flex items-center gap-1">
-        <input type="number" value={editValue} onChange={(e) => setEditValue(e.target.value)} onBlur={save} onKeyDown={(e) => e.key === 'Enter' && save()} autoFocus className="w-16 rounded-lg border border-accent bg-bg-primary px-2 py-1 text-center text-sm focus:outline-none" />
+        <input type="number" value={editValue} onChange={(e) => setEditValue(e.target.value)} onBlur={save} onKeyDown={(e) => e.key === 'Enter' && save()} autoFocus className="w-16 rounded-sm border border-accent bg-bg-primary px-2 py-1 text-center text-sm focus:outline-none" />
       </span>
     );
   }
@@ -43,19 +43,19 @@ export default function WorkoutList({ entries, onUpdateEntry, onDeleteEntry, onD
   return (
     <div className="flex flex-col gap-3">
       {groups.map((g) => (
-        <div key={g.movementName} className="rounded-2xl bg-bg-secondary p-4 card-depth">
+        <div key={g.movementName} className="rounded-sm bg-bg-secondary p-4 card-depth">
           <div className="mb-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <h3 className="font-bold text-text-primary">{g.movementName}</h3>
-              <span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs font-semibold text-accent">{g.entries.length} {g.entries.length === 1 ? 'set' : 'sets'}</span>
+              <span className="rounded-sm bg-accent/10 px-2 py-0.5 text-xs font-semibold text-accent">{g.entries.length} {g.entries.length === 1 ? 'set' : 'sets'}</span>
             </div>
             {onDeleteMovement && (
-              <button onClick={() => onDeleteMovement(g.movementName)} className="rounded-lg p-1.5 text-text-tertiary hover:bg-danger/10 hover:text-danger active:scale-90"><Trash2 size={16} /></button>
+              <button onClick={() => onDeleteMovement(g.movementName)} className="rounded-sm p-1.5 text-text-tertiary hover:bg-danger/10 hover:text-danger active:scale-90"><Trash2 size={16} /></button>
             )}
           </div>
           <div className="flex flex-col gap-1.5">
             {g.entries.map((entry, i) => (
-              <div key={entry.id} className="flex items-center justify-between rounded-xl bg-bg-primary px-3 py-2">
+              <div key={entry.id} className="flex items-center justify-between rounded-sm bg-bg-primary px-3 py-2">
                 <div className="flex items-center gap-2 text-sm">
                   <span className="w-6 text-center text-xs font-bold text-text-tertiary">{i + 1}</span>
                   <InlineEdit value={entry.reps} onSave={(v) => onUpdateEntry(entry.id, { reps: v })} />
@@ -64,8 +64,8 @@ export default function WorkoutList({ entries, onUpdateEntry, onDeleteEntry, onD
                   <span className="text-xs text-text-tertiary">{entry.unit}</span>
                 </div>
                 <div className="flex items-center gap-0.5">
-                  <button onClick={() => onDuplicateEntry(entry)} className="rounded-lg p-1.5 text-text-tertiary hover:text-accent active:scale-90"><Copy size={14} /></button>
-                  <button onClick={() => onDeleteEntry(entry.id)} className="rounded-lg p-1.5 text-text-tertiary hover:text-danger active:scale-90"><Trash2 size={14} /></button>
+                  <button onClick={() => onDuplicateEntry(entry)} className="rounded-sm p-1.5 text-text-tertiary hover:text-accent active:scale-90"><Copy size={14} /></button>
+                  <button onClick={() => onDeleteEntry(entry.id)} className="rounded-sm p-1.5 text-text-tertiary hover:text-danger active:scale-90"><Trash2 size={14} /></button>
                 </div>
               </div>
             ))}

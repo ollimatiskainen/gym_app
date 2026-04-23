@@ -39,12 +39,12 @@ function relativeDate(dateStr: string) {
 function ConfirmModal({ title, message, onConfirm, onCancel }: { title: string; message: string; onConfirm: () => void; onCancel: () => void }) {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={onCancel}>
-      <div className="w-[90%] max-w-sm animate-modal-in rounded-2xl bg-bg-secondary p-6 card-depth" onClick={(e) => e.stopPropagation()}>
+      <div className="w-[90%] max-w-sm animate-modal-in rounded-sm bg-bg-secondary p-6 card-depth" onClick={(e) => e.stopPropagation()}>
         <h3 className="mb-2 text-lg font-bold text-text-primary">{title}</h3>
         <p className="mb-5 text-sm text-text-secondary">{message}</p>
         <div className="flex gap-3">
-          <button onClick={onCancel} className="flex-1 rounded-xl border border-border py-2.5 font-medium text-text-secondary hover:bg-bg-tertiary active:scale-95">Cancel</button>
-          <button onClick={onConfirm} className="flex-1 rounded-xl bg-danger py-2.5 font-bold text-white hover:bg-danger-hover active:scale-95">Delete</button>
+          <button onClick={onCancel} className="flex-1 rounded-sm border border-border py-2.5 font-medium text-text-secondary hover:bg-bg-tertiary active:scale-95">Cancel</button>
+          <button onClick={onConfirm} className="flex-1 rounded-sm bg-danger py-2.5 font-bold text-white hover:bg-danger-hover active:scale-95">Delete</button>
         </div>
       </div>
     </div>
@@ -60,7 +60,10 @@ export default function HistoryPage() {
 
   useEffect(() => {
     if (!user) return;
-    getWorkouts(user.uid).then(setWorkouts).finally(() => setLoading(false));
+    getWorkouts(user.uid)
+      .then(setWorkouts)
+      .catch((err) => console.error('Failed to load history:', err))
+      .finally(() => setLoading(false));
   }, [user]);
 
   const toggle = (id: string) => setExpanded((prev) => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n; });
@@ -121,18 +124,20 @@ export default function HistoryPage() {
                   const isOpen = expanded.has(w.id);
                   const movements = [...new Set(w.entries.map((e) => e.movementName))];
                   return (
-                    <div key={w.id} className="rounded-2xl bg-bg-secondary card-depth overflow-hidden">
-                      <button onClick={() => toggle(w.id)} className="flex w-full items-center justify-between p-4 text-left active:scale-[0.99]">
-                        <div className="flex-1">
+                    <div key={w.id} className="rounded-sm bg-bg-secondary card-depth overflow-hidden">
+                      <div className="flex w-full items-center justify-between p-4 text-left">
+                        <div className="flex-1 cursor-pointer" onClick={() => toggle(w.id)}>
                           <p className="font-bold text-text-primary">{relativeDate(w.date)}</p>
                           <p className="mt-0.5 text-xs text-text-tertiary truncate">{movements.join(', ')}</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs font-semibold text-accent">{w.entries.length}</span>
-                          <button onClick={(e) => { e.stopPropagation(); setModal({ type: 'workout', workoutId: w.id }); }} className="p-1 text-text-tertiary hover:text-danger active:scale-90"><Trash2 size={16} /></button>
-                          {isOpen ? <ChevronUp size={18} className="text-text-tertiary" /> : <ChevronDown size={18} className="text-text-tertiary" />}
+                          <span className="rounded-sm bg-accent/10 px-2 py-0.5 text-xs font-semibold text-accent">{w.entries.length}</span>
+                          <button onClick={() => setModal({ type: 'workout', workoutId: w.id })} className="p-1 text-text-tertiary hover:text-danger active:scale-90"><Trash2 size={16} /></button>
+                          <div className="cursor-pointer p-1" onClick={() => toggle(w.id)}>
+                            {isOpen ? <ChevronUp size={18} className="text-text-tertiary" /> : <ChevronDown size={18} className="text-text-tertiary" />}
+                          </div>
                         </div>
-                      </button>
+                      </div>
                       {isOpen && (
                         <div className="border-t border-border p-4">
                           <WorkoutList

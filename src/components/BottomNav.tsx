@@ -47,7 +47,7 @@ export default function BottomNav() {
                   {tab.label}
                 </span>
                 {isActive && (
-                  <span className="h-1 w-1 rounded-full bg-accent" />
+                  <span className="h-1 w-1 rounded-sm bg-accent" />
                 )}
               </Link>
             );

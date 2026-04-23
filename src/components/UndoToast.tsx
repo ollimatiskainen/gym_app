@@ -33,20 +33,20 @@ export default function UndoToast({ message, onUndo, onDismiss, duration = 5000 
 
   return (
     <div className="fixed bottom-24 left-1/2 z-[100] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 animate-slide-up">
-      <div className="relative overflow-hidden rounded-2xl bg-bg-secondary card-depth border border-border">
+      <div className="relative overflow-hidden rounded-sm bg-bg-secondary card-depth border border-border">
         <div className="flex items-center justify-between gap-3 px-4 py-3">
           <p className="text-sm font-medium text-text-primary">{message}</p>
           <div className="flex items-center gap-1">
             <button
               onClick={handleUndo}
-              className="flex items-center gap-1.5 rounded-xl bg-accent px-3 py-1.5 text-xs font-bold text-text-on-accent active:scale-95"
+              className="flex items-center gap-1.5 rounded-sm bg-accent px-3 py-1.5 text-xs font-bold text-text-on-accent active:scale-95"
             >
               <Undo2 size={14} />
               Undo
             </button>
             <button
               onClick={onDismiss}
-              className="rounded-lg p-1.5 text-text-tertiary hover:text-text-primary active:scale-95"
+              className="rounded-sm p-1.5 text-text-tertiary hover:text-text-primary active:scale-95"
             >
               <X size={16} />
             </button>

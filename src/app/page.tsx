@@ -25,6 +25,9 @@ export default function HomePage() {
     if (!user) return;
     Promise.all([getMovements(user.uid), getTodayWorkout(user.uid)])
       .then(([m, w]) => { setMovements(m); setWorkout(w); })
+      .catch((err) => {
+        console.error('Failed to load home page data:', err);
+      })
       .finally(() => setLoading(false));
   }, [user]);
 
@@ -103,7 +106,7 @@ export default function HomePage() {
           </div>
           <WorkoutList entries={entries} onUpdateEntry={handleUpdateEntry} onDeleteEntry={handleDeleteEntry} onDuplicateEntry={handleDuplicateEntry} onDeleteMovement={handleDeleteMovement} />
 
-          <button onClick={handleFinish} className={`mt-2 w-full rounded-xl py-3.5 text-lg font-bold active:scale-95 ${finishState === 'done' ? 'bg-success text-white' : finishState === 'confirm' ? 'bg-warning text-black' : 'bg-accent text-text-on-accent shadow-[var(--shadow-btn)]'}`}>
+          <button onClick={handleFinish} className={`mt-2 w-full rounded-sm py-3.5 text-lg font-bold active:scale-95 ${finishState === 'done' ? 'bg-success text-white' : finishState === 'confirm' ? 'bg-warning text-black' : 'bg-accent text-text-on-accent shadow-[var(--shadow-btn)]'}`}>
             {finishState === 'done' ? <span className="flex items-center justify-center gap-2"><CheckCircle size={20} /> Done! {entries.length} sets · {totalVolume.toLocaleString()} {settings.unit}</span> : finishState === 'confirm' ? 'Tap again to confirm' : 'Finish Workout'}
           </button>
         </>

@@ -70,7 +70,7 @@ export default function WorkoutForm({ movements, lastEntry, onLogSet }: WorkoutF
   }, [lastEntry, onLogSet]);
 
   return (
-    <div className="rounded-2xl bg-bg-secondary p-4 card-depth animate-fade-in">
+    <div className="rounded-sm bg-bg-secondary p-4 card-depth animate-fade-in">
       {/* Movement Input */}
       <div className="relative mb-3">
         <input
@@ -81,10 +81,10 @@ export default function WorkoutForm({ movements, lastEntry, onLogSet }: WorkoutF
           onFocus={() => movementName && handleMovementChange(movementName)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
           placeholder="Movement name"
-          className="w-full rounded-xl border border-border bg-bg-primary px-4 py-3.5 text-lg text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+          className="w-full rounded-sm border border-border bg-bg-primary px-4 py-3.5 text-lg text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
         />
         {showSuggestions && suggestions.length > 0 && (
-          <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-64 overflow-y-auto rounded-xl border border-border bg-bg-secondary shadow-lg">
+          <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-64 overflow-y-auto rounded-sm border border-border bg-bg-secondary shadow-lg">
             {suggestions.map((m) => (
               <button
                 key={m.id}
@@ -107,7 +107,7 @@ export default function WorkoutForm({ movements, lastEntry, onLogSet }: WorkoutF
           onChange={(e) => setReps(e.target.value)}
           placeholder="Reps"
           min="0"
-          className="rounded-xl border border-border bg-bg-primary px-4 py-3.5 text-lg text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+          className="rounded-sm border border-border bg-bg-primary px-4 py-3.5 text-lg text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
         />
         <input
           type="number"
@@ -116,7 +116,7 @@ export default function WorkoutForm({ movements, lastEntry, onLogSet }: WorkoutF
           placeholder={`Weight (${settings.unit})`}
           min="0"
           step="0.5"
-          className="rounded-xl border border-border bg-bg-primary px-4 py-3.5 text-lg text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+          className="rounded-sm border border-border bg-bg-primary px-4 py-3.5 text-lg text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
         />
       </div>
 
@@ -134,7 +134,7 @@ export default function WorkoutForm({ movements, lastEntry, onLogSet }: WorkoutF
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Optional notes..."
           rows={2}
-          className="mb-3 w-full rounded-xl border border-border bg-bg-primary px-4 py-3 text-sm text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 resize-none"
+          className="mb-3 w-full rounded-sm border border-border bg-bg-primary px-4 py-3 text-sm text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 resize-none"
         />
       )}
 
@@ -142,7 +142,7 @@ export default function WorkoutForm({ movements, lastEntry, onLogSet }: WorkoutF
       <button
         onClick={handleLogSet}
         disabled={!movementName.trim() || !reps}
-        className="mb-2 flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-lg font-bold text-text-on-accent shadow-[var(--shadow-btn)] hover:shadow-[var(--shadow-btn-hover)] active:scale-95 active:shadow-[var(--shadow-btn-pressed)] disabled:opacity-50 disabled:cursor-not-allowed"
+        className="mb-2 flex w-full items-center justify-center gap-2 rounded-sm bg-accent py-3.5 text-lg font-bold text-text-on-accent shadow-[var(--shadow-btn)] hover:shadow-[var(--shadow-btn-hover)] active:scale-95 active:shadow-[var(--shadow-btn-pressed)] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <Plus size={20} strokeWidth={2.5} />
         Log Set
@@ -151,7 +151,7 @@ export default function WorkoutForm({ movements, lastEntry, onLogSet }: WorkoutF
       {lastEntry && (
         <button
           onClick={handleRepeatLast}
-          className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-bg-primary py-3 text-sm font-medium text-text-secondary hover:bg-bg-tertiary active:scale-95"
+          className="flex w-full items-center justify-center gap-2 rounded-sm border border-border bg-bg-primary py-3 text-sm font-medium text-text-secondary hover:bg-bg-tertiary active:scale-95"
         >
           <Repeat size={16} />
           Repeat: {lastEntry.movementName} ({lastEntry.reps} × {lastEntry.weight}{lastEntry.unit})
