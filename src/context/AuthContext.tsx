@@ -48,7 +48,7 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
 
   const signInWithGoogle = async () => {
     if (!auth) {
-      alert('Firebase Auth is not configured. Please add your credentials to .env.local');
+      alert('Firebase Auth is not configured. If you are on Vercel, add your NEXT_PUBLIC_FIREBASE_* variables to the Project Settings.');
       return;
     }
     const provider = new GoogleAuthProvider();
@@ -66,7 +66,7 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
 
   const signInWithGoogleRedirect = async () => {
     if (!auth) {
-      alert('Firebase Auth is not configured. Please add your credentials to .env.local');
+      alert('Firebase Auth is not configured. If you are on Vercel, add your NEXT_PUBLIC_FIREBASE_* variables to the Project Settings.');
       return;
     }
     const provider = new GoogleAuthProvider();

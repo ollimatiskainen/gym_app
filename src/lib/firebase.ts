@@ -27,7 +27,10 @@ if (isConfigValid) {
     console.error('Firebase initialization error:', error);
   }
 } else {
-  console.warn('Firebase configuration is missing or invalid. Check your .env.local file.');
+  const missing = Object.entries(firebaseConfig)
+    .filter(([_, v]) => !v)
+    .map(([k]) => k);
+  console.warn('Firebase configuration is missing or invalid. Missing keys:', missing);
 }
 
 export { auth, db };
