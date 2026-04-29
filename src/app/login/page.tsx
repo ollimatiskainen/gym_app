@@ -1,13 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import { Activity } from 'lucide-react';
 
 export default function LoginPage() {
-  const { signInWithGoogle, signInWithGoogleRedirect } = useAuth();
+  const { user, signInWithGoogle, signInWithGoogleRedirect } = useAuth();
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user, router]);
 
   const handlePopup = async () => {
     setLoading(true);
