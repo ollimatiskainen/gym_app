@@ -30,7 +30,8 @@ if (isConfigValid) {
   const missing = Object.entries(firebaseConfig)
     .filter(([_, v]) => !v)
     .map(([k]) => k);
-  console.warn('Firebase configuration is missing or invalid. Missing keys:', missing);
+  const availableKeys = Object.keys(process.env).filter(k => k.startsWith('NEXT_PUBLIC_FIREBASE'));
+  console.warn('Firebase configuration is missing. Missing:', missing, 'Available on client:', availableKeys);
 }
 
 export { auth, db };
