@@ -27,11 +27,8 @@ if (isConfigValid) {
     console.error('Firebase initialization error:', error);
   }
 } else {
-  const missing = Object.entries(firebaseConfig)
-    .filter(([_, v]) => !v)
-    .map(([k]) => k);
-  const availableKeys = Object.keys(process.env).filter(k => k.startsWith('NEXT_PUBLIC_FIREBASE'));
-  console.warn('Firebase configuration is missing. Missing:', missing, 'Available on client:', availableKeys);
+} else {
+  console.warn('Firebase configuration is missing. Using hardcoded fallbacks.');
 }
 
 export { auth, db };

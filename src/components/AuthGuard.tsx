@@ -11,7 +11,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && !user && pathname !== '/login' && pathname !== '/debug') {
+    if (!loading && !user && pathname !== '/login') {
       router.push('/login');
     }
   }, [user, loading, pathname, router]);
@@ -24,7 +24,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  if (!user && pathname !== '/login' && pathname !== '/debug') {
+  if (!user && pathname !== '/login') {
     return (
       <div className="flex min-h-[50vh] flex-col items-center justify-center p-4 text-center">
         <p className="text-sm text-text-tertiary animate-pulse">Redirecting to login...</p>
